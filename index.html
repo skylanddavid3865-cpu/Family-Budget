@@ -8,7 +8,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body class="bg-gray-50 text-gray-900 min-h-screen">
-  <div class="max-w-5xl mx-auto p-4 md:p-6">
+  <div class="max-w-6xl mx-auto p-4 md:p-6">
     <h1 class="text-2xl md:text-3xl font-bold mb-2">共用家庭收支</h1>
     <p class="text-sm text-gray-600 mb-2">兩支手機打開同一個連結，使用同一組帳號密碼登入，就能共用同一本帳。</p>
     <p id="statusText" class="text-sm text-blue-700 mb-6"></p>
@@ -39,15 +39,16 @@
       </div>
 
       <div class="bg-white rounded-2xl shadow p-4 mb-6">
-        <div class="flex flex-col md:flex-row md:items-end gap-4">
-          <div class="w-full md:w-64">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
             <label class="block text-sm mb-1">查看月份</label>
             <select id="monthFilter" class="w-full border rounded-xl px-3 py-2"></select>
           </div>
-          <div class="w-full md:w-48">
+          <div>
             <label class="block text-sm mb-1">年度總覽</label>
             <input id="yearFilter" type="number" min="2000" max="2100" class="w-full border rounded-xl px-3 py-2" />
           </div>
+          <div class="text-sm text-gray-500 flex items-end">切換年份後，下方年度總覽與每月分類支出總覽都會更新。</div>
         </div>
       </div>
 
@@ -108,6 +109,12 @@
         <div id="yearlyOverview" class="overflow-x-auto"></div>
       </div>
 
+      <div class="bg-white rounded-2xl shadow p-4 mb-6">
+        <h2 class="text-lg font-semibold mb-2">年度每月分類支出總覽</h2>
+        <p class="text-sm text-gray-500 mb-4">橫向看月份，縱向看分類，方便比對每個月同一分類花了多少。</p>
+        <div id="yearlyCategoryOverview" class="overflow-x-auto"></div>
+      </div>
+
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="bg-white rounded-2xl shadow p-4">
           <h2 class="text-lg font-semibold mb-4">當月消費場域分析</h2>
@@ -150,6 +157,7 @@
         placeSummary: document.getElementById("placeSummary"),
         categoryTable: document.getElementById("categoryTable"),
         yearlyOverview: document.getElementById("yearlyOverview"),
+        yearlyCategoryOverview: document.getElementById("yearlyCategoryOverview"),
         yearFilter: document.getElementById("yearFilter"),
         statusText: document.getElementById("statusText")
       };
@@ -218,6 +226,38 @@
         els.yearlyOverview.innerHTML =
           '<table class="w-full text-sm"><thead><tr class="border-b bg-gray-50"><th class="text-left px-4 py-3">月份</th><th class="text-right px-4 py-3">收入</th><th class="text-right px-4 py-3">支出</th><th class="text-right px-4 py-3">結餘</th></tr></thead><tbody>' + rows + '</tbody></table>';
       }
+      function renderYearlyCategoryOverview(allData) {
+        const selectedYear = Number(els.yearFilter.value);
+        const expenseCategories = CATEGORY_OPTIONS.filter(c => c !== "收入");
+        const totals = {};
+        expenseCategories.forEach(category => {
+          totals[category] = {};
+          for (let month = 1; month <= 12; month++) totals[category][month] = 0;
+        });
+        allData.filter(item => item.type === "expense").forEach(item => {
+          const d = new Date(item.date);
+          const year = d.getFullYear();
+          const month = d.getMonth() + 1;
+          if (year === selectedYear && totals[item.place]) {
+            totals[item.place][month] += Number(item.amount);
+          }
+        });
+        let header = '<tr class="border-b bg-gray-50"><th class="sticky left-0 bg-gray-50 text-left px-4 py-3">分類</th>';
+        for (let month = 1; month <= 12; month++) {
+          header += '<th class="text-right px-4 py-3 whitespace-nowrap">' + month + '月</th>';
+        }
+        header += '</tr>';
+        let body = '';
+        expenseCategories.forEach(category => {
+          body += '<tr class="border-b"><td class="sticky left-0 bg-white px-4 py-3 whitespace-nowrap">' + category + '</td>';
+          for (let month = 1; month <= 12; month++) {
+            body += '<td class="text-right px-4 py-3 whitespace-nowrap">' + formatCurrency(totals[category][month]) + '</td>';
+          }
+          body += '</tr>';
+        });
+        els.yearlyCategoryOverview.innerHTML =
+          '<table class="w-full text-sm min-w-[1100px]"><thead>' + header + '</thead><tbody>' + body + '</tbody></table>';
+      }
       function render(allData) {
         const monthlyData = getSelectedMonthData(allData);
         const income = monthlyData.filter(i => i.type === "income").reduce((s, i) => s + Number(i.amount), 0);
@@ -227,6 +267,7 @@
         els.monthlyBalance.textContent = formatCurrency(income - expense);
         renderCategoryTable(monthlyData);
         renderYearlyOverview(allData);
+        renderYearlyCategoryOverview(allData);
 
         const placeMap = {};
         monthlyData.filter(i => i.type === "expense").forEach(i => {
@@ -343,7 +384,6 @@
         buildMonthOptions(Number(els.yearFilter.value), currentSelected);
         loadData();
       };
-
       setStatus("頁面已載入，可以登入。");
     });
   </script>
