@@ -16,14 +16,8 @@
     <div id="authCard" class="bg-white rounded-2xl shadow p-4 mb-6">
       <h2 class="text-lg font-semibold mb-4">登入共用帳本</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
-          <label class="block text-sm mb-1">Email</label>
-          <input id="email" type="email" class="w-full border rounded-xl px-3 py-2" placeholder="輸入共用 Email" />
-        </div>
-        <div>
-          <label class="block text-sm mb-1">密碼</label>
-          <input id="password" type="password" class="w-full border rounded-xl px-3 py-2" placeholder="輸入密碼" />
-        </div>
+        <div><label class="block text-sm mb-1">Email</label><input id="email" type="email" class="w-full border rounded-xl px-3 py-2" placeholder="輸入共用 Email" /></div>
+        <div><label class="block text-sm mb-1">密碼</label><input id="password" type="password" class="w-full border rounded-xl px-3 py-2" placeholder="輸入密碼" /></div>
       </div>
       <button id="signInBtn" type="button" class="w-full mt-4 bg-black text-white rounded-xl px-4 py-3 font-medium">登入</button>
       <p id="authMessage" class="text-sm text-red-600 mt-3 whitespace-pre-wrap"></p>
@@ -31,99 +25,43 @@
 
     <div id="appCard" class="hidden">
       <div class="bg-white rounded-2xl shadow p-4 mb-6 flex items-center justify-between gap-4">
-        <div>
-          <div class="text-sm text-gray-500">目前登入帳號</div>
-          <div id="userEmail" class="font-medium"></div>
-        </div>
+        <div><div class="text-sm text-gray-500">目前登入帳號</div><div id="userEmail" class="font-medium"></div></div>
         <button id="signOutBtn" type="button" class="text-sm text-red-600">登出</button>
       </div>
 
       <div class="bg-white rounded-2xl shadow p-4 mb-6">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div>
-            <label class="block text-sm mb-1">查看月份</label>
-            <select id="monthFilter" class="w-full border rounded-xl px-3 py-2"></select>
-          </div>
-          <div>
-            <label class="block text-sm mb-1">年度總覽</label>
-            <input id="yearFilter" type="number" min="2000" max="2100" class="w-full border rounded-xl px-3 py-2" />
-          </div>
+          <div><label class="block text-sm mb-1">查看月份</label><select id="monthFilter" class="w-full border rounded-xl px-3 py-2"></select></div>
+          <div><label class="block text-sm mb-1">年度總覽</label><input id="yearFilter" type="number" min="2000" max="2100" class="w-full border rounded-xl px-3 py-2" /></div>
           <div class="text-sm text-gray-500 flex items-end">切換年份後，下方年度總覽與每月分類支出總覽都會更新。</div>
         </div>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-        <div class="bg-white rounded-2xl shadow p-4">
-          <div class="text-sm text-gray-500">當月收入</div>
-          <div id="monthlyIncome" class="text-2xl font-bold mt-2">NT$0</div>
-        </div>
-        <div class="bg-white rounded-2xl shadow p-4">
-          <div class="text-sm text-gray-500">當月支出</div>
-          <div id="monthlyExpense" class="text-2xl font-bold mt-2">NT$0</div>
-        </div>
-        <div class="bg-white rounded-2xl shadow p-4">
-          <div class="text-sm text-gray-500">當月結餘</div>
-          <div id="monthlyBalance" class="text-2xl font-bold mt-2">NT$0</div>
-        </div>
+        <div class="bg-white rounded-2xl shadow p-4"><div class="text-sm text-gray-500">當月收入</div><div id="monthlyIncome" class="text-2xl font-bold mt-2">NT$0</div></div>
+        <div class="bg-white rounded-2xl shadow p-4"><div class="text-sm text-gray-500">當月支出</div><div id="monthlyExpense" class="text-2xl font-bold mt-2">NT$0</div></div>
+        <div class="bg-white rounded-2xl shadow p-4"><div class="text-sm text-gray-500">當月結餘</div><div id="monthlyBalance" class="text-2xl font-bold mt-2">NT$0</div></div>
       </div>
 
       <div class="bg-white rounded-2xl shadow p-4 mb-6">
         <h2 class="text-lg font-semibold mb-4">新增收支</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label class="block text-sm mb-1">日期</label>
-            <input id="date" type="date" class="w-full border rounded-xl px-3 py-2" />
-          </div>
-          <div>
-            <label class="block text-sm mb-1">類型</label>
-            <select id="type" class="w-full border rounded-xl px-3 py-2">
-              <option value="income">收入</option>
-              <option value="expense">支出</option>
-            </select>
-          </div>
-          <div>
-            <label class="block text-sm mb-1">金額</label>
-            <input id="amount" type="number" min="0" step="1" class="w-full border rounded-xl px-3 py-2" placeholder="例如 500" />
-          </div>
-          <div>
-            <label class="block text-sm mb-1">消費場域</label>
-            <select id="place" class="w-full border rounded-xl px-3 py-2"></select>
-          </div>
-          <div class="md:col-span-2">
-            <label class="block text-sm mb-1">備註</label>
-            <input id="note" type="text" class="w-full border rounded-xl px-3 py-2" placeholder="可不填" />
-          </div>
-          <div class="md:col-span-2">
-            <button id="saveBtn" type="button" class="w-full bg-black text-white rounded-xl px-4 py-3 font-medium">儲存</button>
-          </div>
+          <div><label class="block text-sm mb-1">日期</label><input id="date" type="date" class="w-full border rounded-xl px-3 py-2" /></div>
+          <div><label class="block text-sm mb-1">類型</label><select id="type" class="w-full border rounded-xl px-3 py-2"><option value="income">收入</option><option value="expense">支出</option></select></div>
+          <div><label class="block text-sm mb-1">金額</label><input id="amount" type="number" min="0" step="1" class="w-full border rounded-xl px-3 py-2" placeholder="例如 500" /></div>
+          <div><label class="block text-sm mb-1">消費場域</label><select id="place" class="w-full border rounded-xl px-3 py-2"></select></div>
+          <div class="md:col-span-2"><label class="block text-sm mb-1">備註</label><input id="note" type="text" class="w-full border rounded-xl px-3 py-2" placeholder="可不填" /></div>
+          <div class="md:col-span-2"><button id="saveBtn" type="button" class="w-full bg-black text-white rounded-xl px-4 py-3 font-medium">儲存</button></div>
         </div>
       </div>
 
-      <div class="bg-white rounded-2xl shadow p-4 mb-6">
-        <h2 class="text-lg font-semibold mb-4">當月各分類支出金額</h2>
-        <div id="categoryTable" class="overflow-x-auto"></div>
-      </div>
-
-      <div class="bg-white rounded-2xl shadow p-4 mb-6">
-        <h2 class="text-lg font-semibold mb-4">年度每月總覽</h2>
-        <div id="yearlyOverview" class="overflow-x-auto"></div>
-      </div>
-
-      <div class="bg-white rounded-2xl shadow p-4 mb-6">
-        <h2 class="text-lg font-semibold mb-2">年度每月分類支出總覽</h2>
-        <p class="text-sm text-gray-500 mb-4">橫向看月份，縱向看分類，方便比對每個月同一分類花了多少。</p>
-        <div id="yearlyCategoryOverview" class="overflow-x-auto"></div>
-      </div>
+      <div class="bg-white rounded-2xl shadow p-4 mb-6"><h2 class="text-lg font-semibold mb-4">當月各分類支出金額</h2><div id="categoryTable" class="overflow-x-auto"></div></div>
+      <div class="bg-white rounded-2xl shadow p-4 mb-6"><h2 class="text-lg font-semibold mb-4">年度每月總覽</h2><div id="yearlyOverview" class="overflow-x-auto"></div></div>
+      <div class="bg-white rounded-2xl shadow p-4 mb-6"><h2 class="text-lg font-semibold mb-2">年度每月分類支出總覽</h2><p class="text-sm text-gray-500 mb-4">橫向看月份，縱向看分類，方便比對每個月同一分類花了多少。</p><div id="yearlyCategoryOverview" class="overflow-x-auto"></div></div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="bg-white rounded-2xl shadow p-4">
-          <h2 class="text-lg font-semibold mb-4">當月消費場域分析</h2>
-          <div id="placeSummary" class="space-y-2 text-sm text-gray-700"></div>
-        </div>
-        <div class="bg-white rounded-2xl shadow p-4">
-          <h2 class="text-lg font-semibold mb-4">當月收支紀錄</h2>
-          <div id="transactionList" class="space-y-3"></div>
-        </div>
+        <div class="bg-white rounded-2xl shadow p-4"><h2 class="text-lg font-semibold mb-4">當月消費場域分析</h2><div id="placeSummary" class="space-y-2 text-sm text-gray-700"></div></div>
+        <div class="bg-white rounded-2xl shadow p-4"><h2 class="text-lg font-semibold mb-4">當月收支紀錄</h2><div id="transactionList" class="space-y-3"></div></div>
       </div>
     </div>
   </div>
@@ -131,45 +69,28 @@
   <script>
     const SUPABASE_URL = "https://svwtelkvabksmxunmbjg.supabase.co";
     const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN2d3RlbGt2YWJrc214dW5tYmpnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM2MjQ4ODAsImV4cCI6MjA4OTIwMDg4MH0.eSCjpP9IstX4D6O4PMNdShKDUcR2Gr1YdRA6doIq-qE";
-    const CATEGORY_OPTIONS = ["收入","生活用品","教育書籍","食材","外食","交通","水電瓦斯","娛樂","衣服","土豆","保險","奉獻","投資"];
+    const CATEGORY_OPTIONS = ["收入","生活用品","教育書籍","食材","外食","交通","水電瓦斯","娛樂","衣服","土豆","保險","奉獻","投資","電信費","租金","瑄的小寶貝們","民的花錢","送禮","看醫生","交際費用","其他"];
 
     document.addEventListener("DOMContentLoaded", function () {
       const els = {
-        authCard: document.getElementById("authCard"),
-        appCard: document.getElementById("appCard"),
-        email: document.getElementById("email"),
-        password: document.getElementById("password"),
-        signInBtn: document.getElementById("signInBtn"),
-        signOutBtn: document.getElementById("signOutBtn"),
-        authMessage: document.getElementById("authMessage"),
-        userEmail: document.getElementById("userEmail"),
-        monthFilter: document.getElementById("monthFilter"),
-        date: document.getElementById("date"),
-        type: document.getElementById("type"),
-        amount: document.getElementById("amount"),
-        place: document.getElementById("place"),
-        note: document.getElementById("note"),
-        saveBtn: document.getElementById("saveBtn"),
-        monthlyIncome: document.getElementById("monthlyIncome"),
-        monthlyExpense: document.getElementById("monthlyExpense"),
-        monthlyBalance: document.getElementById("monthlyBalance"),
-        transactionList: document.getElementById("transactionList"),
-        placeSummary: document.getElementById("placeSummary"),
-        categoryTable: document.getElementById("categoryTable"),
-        yearlyOverview: document.getElementById("yearlyOverview"),
-        yearlyCategoryOverview: document.getElementById("yearlyCategoryOverview"),
-        yearFilter: document.getElementById("yearFilter"),
+        authCard: document.getElementById("authCard"), appCard: document.getElementById("appCard"),
+        email: document.getElementById("email"), password: document.getElementById("password"),
+        signInBtn: document.getElementById("signInBtn"), signOutBtn: document.getElementById("signOutBtn"),
+        authMessage: document.getElementById("authMessage"), userEmail: document.getElementById("userEmail"),
+        monthFilter: document.getElementById("monthFilter"), date: document.getElementById("date"),
+        type: document.getElementById("type"), amount: document.getElementById("amount"),
+        place: document.getElementById("place"), note: document.getElementById("note"),
+        saveBtn: document.getElementById("saveBtn"), monthlyIncome: document.getElementById("monthlyIncome"),
+        monthlyExpense: document.getElementById("monthlyExpense"), monthlyBalance: document.getElementById("monthlyBalance"),
+        transactionList: document.getElementById("transactionList"), placeSummary: document.getElementById("placeSummary"),
+        categoryTable: document.getElementById("categoryTable"), yearlyOverview: document.getElementById("yearlyOverview"),
+        yearlyCategoryOverview: document.getElementById("yearlyCategoryOverview"), yearFilter: document.getElementById("yearFilter"),
         statusText: document.getElementById("statusText")
       };
-
       const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-      function setStatus(text) {
-        els.statusText.textContent = text || "";
-      }
-      function formatCurrency(num) {
-        return "NT$" + Number(num || 0).toLocaleString("zh-TW");
-      }
+      function setStatus(text) { els.statusText.textContent = text || ""; }
+      function formatCurrency(num) { return "NT$" + Number(num || 0).toLocaleString("zh-TW"); }
       function buildMonthOptions(year, selectedMonth) {
         els.monthFilter.innerHTML = "";
         for (let month = 1; month <= 12; month++) {
@@ -201,62 +122,41 @@
       function renderCategoryTable(monthlyData) {
         const totals = {};
         CATEGORY_OPTIONS.forEach(c => totals[c] = 0);
-        monthlyData.filter(i => i.type === "expense").forEach(i => {
-          totals[i.place] = (totals[i.place] || 0) + Number(i.amount);
-        });
-        const rows = CATEGORY_OPTIONS.map(category =>
-          '<tr class="border-b"><td class="px-4 py-3">' + category + '</td><td class="px-4 py-3 text-right font-medium">' + formatCurrency(totals[category]) + '</td></tr>'
-        ).join("");
-        els.categoryTable.innerHTML =
-          '<table class="w-full text-sm"><thead><tr class="border-b bg-gray-50"><th class="text-left px-4 py-3">分類</th><th class="text-right px-4 py-3">金額</th></tr></thead><tbody>' + rows + '</tbody></table>';
+        monthlyData.filter(i => i.type === "expense").forEach(i => { totals[i.place] = (totals[i.place] || 0) + Number(i.amount); });
+        const rows = CATEGORY_OPTIONS.map(category => '<tr class="border-b"><td class="px-4 py-3">' + category + '</td><td class="px-4 py-3 text-right font-medium">' + formatCurrency(totals[category]) + '</td></tr>').join("");
+        els.categoryTable.innerHTML = '<table class="w-full text-sm"><thead><tr class="border-b bg-gray-50"><th class="text-left px-4 py-3">分類</th><th class="text-right px-4 py-3">金額</th></tr></thead><tbody>' + rows + '</tbody></table>';
       }
       function renderYearlyOverview(allData) {
         const selectedYear = Number(els.yearFilter.value);
         let rows = "";
         for (let month = 1; month <= 12; month++) {
-          const monthData = allData.filter(item => {
-            const d = new Date(item.date);
-            return d.getFullYear() === selectedYear && d.getMonth() + 1 === month;
-          });
+          const monthData = allData.filter(item => { const d = new Date(item.date); return d.getFullYear() === selectedYear && d.getMonth() + 1 === month; });
           const income = monthData.filter(i => i.type === "income").reduce((s, i) => s + Number(i.amount), 0);
           const expense = monthData.filter(i => i.type === "expense").reduce((s, i) => s + Number(i.amount), 0);
           const balance = income - expense;
           rows += '<tr class="border-b"><td class="px-4 py-3">' + month + ' 月</td><td class="px-4 py-3 text-right">' + formatCurrency(income) + '</td><td class="px-4 py-3 text-right">' + formatCurrency(expense) + '</td><td class="px-4 py-3 text-right font-medium ' + (balance >= 0 ? 'text-green-600' : 'text-red-600') + '">' + formatCurrency(balance) + '</td></tr>';
         }
-        els.yearlyOverview.innerHTML =
-          '<table class="w-full text-sm"><thead><tr class="border-b bg-gray-50"><th class="text-left px-4 py-3">月份</th><th class="text-right px-4 py-3">收入</th><th class="text-right px-4 py-3">支出</th><th class="text-right px-4 py-3">結餘</th></tr></thead><tbody>' + rows + '</tbody></table>';
+        els.yearlyOverview.innerHTML = '<table class="w-full text-sm"><thead><tr class="border-b bg-gray-50"><th class="text-left px-4 py-3">月份</th><th class="text-right px-4 py-3">收入</th><th class="text-right px-4 py-3">支出</th><th class="text-right px-4 py-3">結餘</th></tr></thead><tbody>' + rows + '</tbody></table>';
       }
       function renderYearlyCategoryOverview(allData) {
         const selectedYear = Number(els.yearFilter.value);
         const expenseCategories = CATEGORY_OPTIONS.filter(c => c !== "收入");
         const totals = {};
-        expenseCategories.forEach(category => {
-          totals[category] = {};
-          for (let month = 1; month <= 12; month++) totals[category][month] = 0;
-        });
+        expenseCategories.forEach(category => { totals[category] = {}; for (let month = 1; month <= 12; month++) totals[category][month] = 0; });
         allData.filter(item => item.type === "expense").forEach(item => {
-          const d = new Date(item.date);
-          const year = d.getFullYear();
-          const month = d.getMonth() + 1;
-          if (year === selectedYear && totals[item.place]) {
-            totals[item.place][month] += Number(item.amount);
-          }
+          const d = new Date(item.date); const year = d.getFullYear(); const month = d.getMonth() + 1;
+          if (year === selectedYear && totals[item.place]) totals[item.place][month] += Number(item.amount);
         });
         let header = '<tr class="border-b bg-gray-50"><th class="sticky left-0 bg-gray-50 text-left px-4 py-3">分類</th>';
-        for (let month = 1; month <= 12; month++) {
-          header += '<th class="text-right px-4 py-3 whitespace-nowrap">' + month + '月</th>';
-        }
+        for (let month = 1; month <= 12; month++) header += '<th class="text-right px-4 py-3 whitespace-nowrap">' + month + '月</th>';
         header += '</tr>';
         let body = '';
         expenseCategories.forEach(category => {
           body += '<tr class="border-b"><td class="sticky left-0 bg-white px-4 py-3 whitespace-nowrap">' + category + '</td>';
-          for (let month = 1; month <= 12; month++) {
-            body += '<td class="text-right px-4 py-3 whitespace-nowrap">' + formatCurrency(totals[category][month]) + '</td>';
-          }
+          for (let month = 1; month <= 12; month++) body += '<td class="text-right px-4 py-3 whitespace-nowrap">' + formatCurrency(totals[category][month]) + '</td>';
           body += '</tr>';
         });
-        els.yearlyCategoryOverview.innerHTML =
-          '<table class="w-full text-sm min-w-[1100px]"><thead>' + header + '</thead><tbody>' + body + '</tbody></table>';
+        els.yearlyCategoryOverview.innerHTML = '<table class="w-full text-sm min-w-[1500px]"><thead>' + header + '</thead><tbody>' + body + '</tbody></table>';
       }
       function render(allData) {
         const monthlyData = getSelectedMonthData(allData);
@@ -265,125 +165,56 @@
         els.monthlyIncome.textContent = formatCurrency(income);
         els.monthlyExpense.textContent = formatCurrency(expense);
         els.monthlyBalance.textContent = formatCurrency(income - expense);
-        renderCategoryTable(monthlyData);
-        renderYearlyOverview(allData);
-        renderYearlyCategoryOverview(allData);
-
+        renderCategoryTable(monthlyData); renderYearlyOverview(allData); renderYearlyCategoryOverview(allData);
         const placeMap = {};
-        monthlyData.filter(i => i.type === "expense").forEach(i => {
-          placeMap[i.place] = (placeMap[i.place] || 0) + Number(i.amount);
-        });
+        monthlyData.filter(i => i.type === "expense").forEach(i => { placeMap[i.place] = (placeMap[i.place] || 0) + Number(i.amount); });
         const sortedPlaces = Object.entries(placeMap).sort((a, b) => b[1] - a[1]);
-        els.placeSummary.innerHTML = sortedPlaces.length
-          ? sortedPlaces.map(([place, total]) => '<div class="flex items-center justify-between border-b pb-2 text-sm"><span>' + place + '</span><span class="font-medium">' + formatCurrency(total) + '</span></div>').join("")
-          : '<p class="text-sm text-gray-500">這個月份尚無支出資料</p>';
-
-        els.transactionList.innerHTML = monthlyData.length
-          ? monthlyData.map(item => '<div class="border rounded-xl p-3"><div class="flex items-start justify-between gap-3"><div><div class="font-medium">' + item.place + '</div><div class="text-sm text-gray-500">' + item.date + '｜' + (item.type === "income" ? "收入" : "支出") + '</div><div class="text-sm text-gray-600 mt-1">' + (item.note || "") + '</div></div><div class="text-right"><div class="font-bold ' + (item.type === "income" ? "text-green-600" : "text-red-600") + '">' + (item.type === "income" ? "+" : "-") + formatCurrency(item.amount) + '</div><button data-id="' + item.id + '" class="deleteBtn text-xs text-red-500 mt-2">刪除</button></div></div></div>').join("")
-          : '<p class="text-sm text-gray-500">這個月份目前還沒有資料</p>';
-
+        els.placeSummary.innerHTML = sortedPlaces.length ? sortedPlaces.map(([place, total]) => '<div class="flex items-center justify-between border-b pb-2 text-sm"><span>' + place + '</span><span class="font-medium">' + formatCurrency(total) + '</span></div>').join("") : '<p class="text-sm text-gray-500">這個月份尚無支出資料</p>';
+        els.transactionList.innerHTML = monthlyData.length ? monthlyData.map(item => '<div class="border rounded-xl p-3"><div class="flex items-start justify-between gap-3"><div><div class="font-medium">' + item.place + '</div><div class="text-sm text-gray-500">' + item.date + '｜' + (item.type === "income" ? "收入" : "支出") + '</div><div class="text-sm text-gray-600 mt-1">' + (item.note || "") + '</div></div><div class="text-right"><div class="font-bold ' + (item.type === "income" ? "text-green-600" : "text-red-600") + '">' + (item.type === "income" ? "+" : "-") + formatCurrency(item.amount) + '</div><button data-id="' + item.id + '" class="deleteBtn text-xs text-red-500 mt-2">刪除</button></div></div></div>').join("") : '<p class="text-sm text-gray-500">這個月份目前還沒有資料</p>';
         document.querySelectorAll(".deleteBtn").forEach(btn => {
           btn.onclick = async function () {
             const { error } = await supabase.from("transactions").delete().eq("id", btn.dataset.id);
-            if (error) {
-              setStatus("刪除失敗：" + error.message);
-              return;
-            }
+            if (error) { setStatus("刪除失敗：" + error.message); return; }
             await loadData();
           };
         });
       }
       async function loadData() {
         setStatus("正在讀取資料...");
-        const { data, error } = await supabase
-          .from("transactions")
-          .select("id, user_id, date, type, amount, place, note, created_at")
-          .order("date", { ascending: false })
-          .order("created_at", { ascending: false });
-        if (error) {
-          setStatus("讀取失敗：" + error.message);
-          return;
-        }
-        render(data || []);
-        setStatus("資料已更新");
+        const { data, error } = await supabase.from("transactions").select("id, user_id, date, type, amount, place, note, created_at").order("date", { ascending: false }).order("created_at", { ascending: false });
+        if (error) { setStatus("讀取失敗：" + error.message); return; }
+        render(data || []); setStatus("資料已更新");
       }
       async function saveTransaction() {
         const { data: authData } = await supabase.auth.getUser();
         const user = authData && authData.user;
         if (!user) return;
-        if (!els.amount.value) {
-          setStatus("請先輸入金額");
-          return;
-        }
+        if (!els.amount.value) { setStatus("請先輸入金額"); return; }
         setStatus("正在儲存...");
-        const payload = {
-          user_id: user.id,
-          date: els.date.value,
-          type: els.type.value,
-          amount: Number(els.amount.value),
-          place: els.place.value,
-          note: els.note.value.trim() || null
-        };
+        const payload = { user_id: user.id, date: els.date.value, type: els.type.value, amount: Number(els.amount.value), place: els.place.value, note: els.note.value.trim() || null };
         const { error } = await supabase.from("transactions").insert(payload);
-        if (error) {
-          setStatus("儲存失敗：" + error.message);
-          return;
-        }
-        els.amount.value = "";
-        els.note.value = "";
-        els.type.value = "expense";
-        els.place.value = "收入";
-        await loadData();
+        if (error) { setStatus("儲存失敗：" + error.message); return; }
+        els.amount.value = ""; els.note.value = ""; els.type.value = "expense"; els.place.value = "收入"; await loadData();
       }
-      async function showApp(user) {
-        els.authCard.classList.add("hidden");
-        els.appCard.classList.remove("hidden");
-        els.userEmail.textContent = user.email || "";
-        await loadData();
-      }
+      async function showApp(user) { els.authCard.classList.add("hidden"); els.appCard.classList.remove("hidden"); els.userEmail.textContent = user.email || ""; await loadData(); }
       async function signIn() {
         els.authMessage.textContent = "";
-        const email = els.email.value.trim();
-        const password = els.password.value.trim();
-        if (!email || !password) {
-          els.authMessage.textContent = "請輸入 Email 與密碼";
-          return;
-        }
-        els.signInBtn.disabled = true;
-        els.signInBtn.textContent = "登入中...";
+        const email = els.email.value.trim(); const password = els.password.value.trim();
+        if (!email || !password) { els.authMessage.textContent = "請輸入 Email 與密碼"; return; }
+        els.signInBtn.disabled = true; els.signInBtn.textContent = "登入中...";
         try {
           const result = await supabase.auth.signInWithPassword({ email, password });
-          if (result.error) {
-            els.authMessage.textContent = result.error.message;
-            return;
-          }
-          els.password.value = "";
-          setStatus("登入成功");
-          await showApp(result.data.user);
-        } catch (e) {
-          els.authMessage.textContent = e && e.message ? e.message : String(e);
-        } finally {
-          els.signInBtn.disabled = false;
-          els.signInBtn.textContent = "登入";
-        }
+          if (result.error) { els.authMessage.textContent = result.error.message; return; }
+          els.password.value = ""; setStatus("登入成功"); await showApp(result.data.user);
+        } catch (e) { els.authMessage.textContent = e && e.message ? e.message : String(e); }
+        finally { els.signInBtn.disabled = false; els.signInBtn.textContent = "登入"; }
       }
-      async function signOut() {
-        await supabase.auth.signOut();
-        els.appCard.classList.add("hidden");
-        els.authCard.classList.remove("hidden");
-        setStatus("已登出");
-      }
+      async function signOut() { await supabase.auth.signOut(); els.appCard.classList.add("hidden"); els.authCard.classList.remove("hidden"); setStatus("已登出"); }
 
       initUI();
-      els.signInBtn.onclick = signIn;
-      els.signOutBtn.onclick = signOut;
-      els.saveBtn.onclick = saveTransaction;
+      els.signInBtn.onclick = signIn; els.signOutBtn.onclick = signOut; els.saveBtn.onclick = saveTransaction;
       els.monthFilter.onchange = loadData;
-      els.yearFilter.onchange = function () {
-        const currentSelected = els.monthFilter.value ? Number(els.monthFilter.value.split("-")[1]) : 1;
-        buildMonthOptions(Number(els.yearFilter.value), currentSelected);
-        loadData();
-      };
+      els.yearFilter.onchange = function () { const currentSelected = els.monthFilter.value ? Number(els.monthFilter.value.split("-")[1]) : 1; buildMonthOptions(Number(els.yearFilter.value), currentSelected); loadData(); };
       setStatus("頁面已載入，可以登入。");
     });
   </script>
